@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
+
+  const [joinData, setJoinData] = useState({
+    id: "",
+    pw: "",
+    name: "",
+    phone: "",
+    email: "",
+    zonecode: "",
+    address1: "",
+    address2: ""
+  })
+
+  const handlePostCode = () => {
+  new window.kakao.Postcode({     // 전역객체를 써줘야해서 window. 작성
+    oncomplete: function(data) {
+
+      console.log(data.zonecode, data.roadAddress);
+
+      setJoinData(prev => ({...prev, zonecode: data.zonecode, address1: data.roadAddress}));
+    }
+  }).open();
+}
+
   return (
     <div className={styles.container}>
       <div className={styles.signUpCard}>
@@ -13,8 +36,11 @@ const SignUp = () => {
         <form className={styles.form}>
           <div className={styles.inputGroup}>
             <label htmlFor="userId">ID</label>
-            <div className={styles.inputWrapper}>
-              <input type="text" id="userId" placeholder="Enter ID" required />
+            <div className={styles.idWrapper}>
+              <div className={styles.inputWrapper} style={{ flex: 1 }}>
+                <input type="text" id="userId" placeholder="Enter ID" required />
+              </div>
+              <button type="button" className={styles.searchBtn}>중복확인</button>
             </div>
           </div>
 
@@ -60,7 +86,7 @@ const SignUp = () => {
                 <div className={styles.inputWrapper}>
                   <input type="text" id="zonecode" placeholder="Zonecode" readOnly />
                 </div>
-                <button type="button" className={styles.searchBtn}>Search</button>
+                <button type="button" className={styles.searchBtn} onClick={handlePostCode}>Search</button>
               </div>
               <div className={styles.inputWrapper}>
                 <input type="text" id="address1" placeholder="Main Address" readOnly />

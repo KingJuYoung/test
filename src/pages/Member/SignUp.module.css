@@ -88,6 +88,11 @@
   gap: 12px;
 }
 
+.idWrapper {
+  display: flex;
+  gap: 12px;
+}
+
 .zonecodeWrapper {
   display: flex;
   gap: 12px;
