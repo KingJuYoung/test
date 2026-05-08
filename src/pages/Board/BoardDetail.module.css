@@ -1,3 +1,105 @@
 .container {
-  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 60px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.articleHeader {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.articleHeader h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.author {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.dot {
+  color: #cbd5e1;
+}
+
+.contentBody {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 60px;
+}
+
+.contentBody p {
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.leftActions {
+  display: flex;
+  gap: 12px;
+}
+
+.backBtn {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #0f172a;
+}
+
+.editBtn, .deleteBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.editBtn {
+  background-color: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.editBtn:hover {
+  background-color: #f1f5f9;
+}
+
+.deleteBtn {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+}
+
+.deleteBtn:hover {
+  background-color: #fee2e2;
 }

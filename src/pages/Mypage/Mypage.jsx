@@ -3,8 +3,9 @@ import styles from './Mypage.module.css';
 
 const Mypage = () => {
   return (
-    <div className={styles.container}>
-      <h1>Mypage</h1>
+    <div className={styles.container} style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+      <button className={styles.actionCard} style={{ cursor: 'pointer' }}>My Posts</button>
+      <button className={styles.actionCard} style={{ cursor: 'pointer' }}>Settings</button>
     </div>
   );
 };

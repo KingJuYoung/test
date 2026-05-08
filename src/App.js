@@ -13,15 +13,22 @@ function App() {
   return (
     <Router>
       <div className={styles.app}>
-        <nav className={styles.nav}>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/board">Board</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-            <li><Link to="/mypage">My Page</Link></li>
-          </ul>
-        </nav>
+        <header className={styles.header}>
+          <div className={styles.navContainer}>
+            <Link to="/" className={styles.logo}>ModernApp</Link>
+            
+            <nav className={styles.navLinks}>
+              <Link to="/" className={styles.navLink}>Home</Link>
+              <Link to="/board" className={styles.navLink}>Board</Link>
+            </nav>
+
+            <div className={styles.authButtons}>
+              <Link to="/mypage" className={styles.navLink}>My Page</Link>
+              <Link to="/login" className={styles.loginBtn}>Login</Link>
+              <Link to="/signup" className={styles.signUpBtn}>Sign Up</Link>
+            </div>
+          </div>
+        </header>
 
         <main className={styles.main}>
           <Routes>
@@ -35,6 +42,10 @@ function App() {
             <Route path="/mypage" element={<Mypage />} />
           </Routes>
         </main>
+
+        <footer className={styles.footer}>
+          <p>© 2026 ModernApp. All rights reserved.</p>
+        </footer>
       </div>
     </Router>
   );
