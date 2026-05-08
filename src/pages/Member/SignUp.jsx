@@ -15,6 +15,7 @@ const SignUp = () => {
     address2: ""
   })
 
+  // daum.api 
   const handlePostCode = () => {
   new window.kakao.Postcode({     // 전역객체를 써줘야해서 window. 작성
     oncomplete: function(data) {
@@ -24,6 +25,11 @@ const SignUp = () => {
       setJoinData(prev => ({...prev, zonecode: data.zonecode, address1: data.roadAddress}));
     }
   }).open();
+}
+
+// id 중복 확인 버튼
+const handleDupCheck = () => {
+
 }
 
   return (
@@ -38,16 +44,16 @@ const SignUp = () => {
             <label htmlFor="userId">ID</label>
             <div className={styles.idWrapper}>
               <div className={styles.inputWrapper} style={{ flex: 1 }}>
-                <input type="text" id="userId" placeholder="Enter ID" required />
+                <input type="text" id="userId" placeholder="Enter ID" required onChange={handleChange}/>
               </div>
-              <button type="button" className={styles.searchBtn}>중복확인</button>
+              <button type="button" className={styles.searchBtn} onClick={handleDupCheck}>중복확인</button>
             </div>
           </div>
 
           <div className={styles.inputGroup}>
             <label htmlFor="password">Password</label>
             <div className={styles.inputWrapper}>
-              <input type="password" id="password" placeholder="••••••••" required />
+              <input type="password" id="password" placeholder="••••••••" required onChange={handleChange}/>
             </div>
           </div>
 
@@ -61,21 +67,21 @@ const SignUp = () => {
           <div className={styles.inputGroup}>
             <label htmlFor="name">Name</label>
             <div className={styles.inputWrapper}>
-              <input type="text" id="name" placeholder="Full Name" required />
+              <input type="text" id="name" placeholder="Full Name" required onChange={handleChange}/>
             </div>
           </div>
 
           <div className={styles.inputGroup}>
             <label htmlFor="phone">Phone</label>
             <div className={styles.inputWrapper}>
-              <input type="tel" id="phone" placeholder="010-1234-5678" required />
+              <input type="tel" id="phone" placeholder="010-1234-5678" required onChange={handleChange}/>
             </div>
           </div>
 
           <div className={styles.inputGroup}>
             <label htmlFor="email">Email Address</label>
             <div className={styles.inputWrapper}>
-              <input type="email" id="email" placeholder="name@example.com" required />
+              <input type="email" id="email" placeholder="name@example.com" required onChange={handleChange}/>
             </div>
           </div>
 
@@ -92,7 +98,7 @@ const SignUp = () => {
                 <input type="text" id="address1" placeholder="Main Address" readOnly />
               </div>
               <div className={styles.inputWrapper}>
-                <input type="text" id="address2" placeholder="Detailed Address" />
+                <input type="text" id="address2" placeholder="Detailed Address" onChange={handleChange}/>
               </div>
             </div>
           </div>
