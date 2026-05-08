@@ -1,3 +1,141 @@
 .container {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.ctaButton {
+  background-color: #2563eb;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: transform 0.2s, background-color 0.2s;
+  display: inline-block;
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Features Section */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Recent Posts Section */
+.recentSection {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.sectionHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.viewAll {
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+}
+
+.postItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.postItem:last-child {
+  border-bottom: none;
+}
+
+.postInfo h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.postInfo p {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.postMeta {
+  color: #94a3b8;
+  font-size: 0.875rem;
 }

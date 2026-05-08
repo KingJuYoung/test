@@ -1,25 +1,101 @@
 .app {
-  font-family: Arial, sans-serif;
-}
-
-.nav {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-}
-
-.nav ul {
-  list-style: none;
-  padding: 0;
+  min-height: 100vh;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
 }
 
-.nav a {
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e2e8f0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.navLinks {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #1e293b;
+}
+
+.authButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.loginBtn {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.loginBtn:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+.signUpBtn {
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: #2563eb;
   color: white;
-  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.signUpBtn:hover {
+  background-color: #1d4ed8;
 }
 
 .main {
-  padding: 20px;
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.footer {
+  border-top: 1px solid #e2e8f0;
+  padding: 40px 24px;
+  background-color: white;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.875rem;
 }
