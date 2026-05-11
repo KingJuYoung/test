@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Board.module.css';
 import { getBoards } from '../../api/board';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const Board = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     getBoards().then(resp => {
@@ -14,6 +18,19 @@ const Board = () => {
       console.error("Error fetching boards:", err);
     });
   }, []);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
+  const filteredPosts = posts.filter(post => 
+    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    post.writer.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLastPost = page * itemsPerPage;
+  const indexOfFirstPost = indexOfLastPost - itemsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div className={styles.container}>
@@ -30,7 +47,10 @@ const Board = () => {
               placeholder="검색어를 입력하세요..." 
               className={styles.searchInput}
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setPage(1);
+              }}
             />
             <button className={styles.searchBtn}>검색</button>
           </div>
@@ -53,7 +73,7 @@ const Board = () => {
               </tr>
             </thead>
             <tbody>
-              {posts.map((post) => (
+              {currentPosts.map((post) => (
                 <tr key={post.seq} className={styles.row}>
                   <td className={styles.tdNo}>{post.seq}</td>
                   <td className={styles.tdTitle}>
@@ -70,12 +90,15 @@ const Board = () => {
           </table>
         </div>
 
-        <div className={styles.pagination}>
-          <button className={styles.pageBtn} disabled>&lt;</button>
-          <button className={`${styles.pageBtn} ${styles.active}`}>1</button>
-          <button className={styles.pageBtn}>2</button>
-          <button className={styles.pageBtn}>3</button>
-          <button className={styles.pageBtn}>&gt;</button>
+        <div className={styles.paginationContainer}>
+          <Stack spacing={2} alignItems="center" sx={{ mt: 4 }}>
+            <Pagination 
+              count={Math.ceil(filteredPosts.length / itemsPerPage)} 
+              page={page} 
+              onChange={handleChange} 
+              color="primary" 
+            />
+          </Stack>
         </div>
       </div>
     </div>
