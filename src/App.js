@@ -9,7 +9,12 @@ import SignUp from './pages/Member/SignUp';
 import Mypage from './pages/Mypage/Mypage';
 import styles from './App.module.css';
 
+import useAuthStore from './store/authStore';
+
 function App() {
+
+  const { token, logout } = useAuthStore();
+
   return (
     <Router>
       <div className={styles.app}>
@@ -24,7 +29,11 @@ function App() {
 
             <div className={styles.authButtons}>
               <Link to="/mypage" className={styles.navLink}>My Page</Link>
-              <Link to="/login" className={styles.loginBtn}>Login</Link>
+              {token ? (
+                <Link to="/" className={styles.loginBtn} onClick={logout}>Logout</Link>
+              ) : (
+                <Link to="/login" className={styles.loginBtn}>Login</Link>
+              )}
               <Link to="/signup" className={styles.signUpBtn}>Sign Up</Link>
             </div>
           </div>
