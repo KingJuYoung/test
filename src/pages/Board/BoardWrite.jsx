@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './BoardWrite.module.css';
 import { createBoard } from '../../api/board';
+import useAuthStore from '../../store/authStore';
 
 const BoardWrite = () => {
   const navigate = useNavigate();
+  const { token, loginId } = useAuthStore();
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [contents, setContents] = useState('');
+
+  useEffect(() => {
+    if (!token) {
+      alert("로그인이 필요한 서비스입니다.");
+      navigate('/login');
+    }
+  }, [token, navigate]);
 
   const handleSubmit = async () => {
     try {
-      await createBoard({ title, content });
+      await createBoard({ title, contents, writer: loginId });
       navigate('/board');
     } catch (error) {
       console.error('Error creating board:', error);
       alert('게시글 작성 중 오류가 발생했습니다.');
     }
   };
+
+  if (!token) return null;
 
   return (
     <div className={styles.container}>
@@ -41,11 +52,11 @@ const BoardWrite = () => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="content">내용</label>
+            <label htmlFor="contents">내용</label>
             <textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
+              id="contents"
+              value={contents}
+              onChange={(e) => setContents(e.target.value)}
               placeholder="게시글 내용을 입력하세요"
               required
             ></textarea>
@@ -63,7 +74,7 @@ const BoardWrite = () => {
               type="button" 
               className={styles.submitBtn}
               onClick={handleSubmit}
-              disabled={!title.trim() || !content.trim()}
+              disabled={!title.trim() || !contents.trim()}
             >
               등록
             </button>

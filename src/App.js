@@ -42,10 +42,9 @@ function App() {
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/board" element={<Board />}>
-              <Route path="write" element={<BoardWrite />} />
-              <Route path=":id" element={<BoardDetail />} />
-            </Route>
+            <Route path="/board" element={<Board />} />
+            <Route path="/board/write" element={<BoardWrite />} />
+            <Route path="/board/:id" element={<BoardDetail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/mypage" element={<Mypage />} />
