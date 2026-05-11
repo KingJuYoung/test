@@ -1,90 +1,140 @@
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.writeSection {
   background-color: white;
   padding: 40px;
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .header {
   margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .header h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .formGroup {
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .formGroup label {
-  display: block;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #1e293b;
-  margin-bottom: 8px;
+  color: #334155;
 }
 
-.formGroup input, .formGroup textarea {
+.formGroup input,
+.formGroup textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #cbd5e1;
   font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #94a3b8;
+}
+
+.formGroup input:hover,
+.formGroup textarea:hover {
+  background-color: white;
+  border-color: #94a3b8;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  background-color: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .formGroup textarea {
-  min-height: 300px;
+  min-height: 320px;
   resize: vertical;
   line-height: 1.6;
-}
-
-.formGroup input:focus, .formGroup textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .actions {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 12px;
-  margin-top: 32px;
-  padding-top: 32px;
+  margin-top: 16px;
+  padding-top: 24px;
   border-top: 1px solid #f1f5f9;
 }
 
 .cancelBtn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.875rem;
-  color: #64748b;
-  background-color: transparent;
-  border: 1px solid #e2e8f0;
-  transition: background-color 0.2s;
+  font-size: 0.95rem;
+  color: #475569;
+  background-color: white;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .cancelBtn:hover {
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
+  color: #1e293b;
 }
 
 .submitBtn {
-  padding: 10px 24px;
+  padding: 12px 32px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: white;
-  background-color: #2563eb;
+  background-color: #3b82f6;
   border: none;
-  transition: background-color 0.2s;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .submitBtn:hover {
-  background-color: #1d4ed8;
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.submitBtn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
