@@ -6,20 +6,14 @@ import useAuthStore from '../../store/authStore';
 
 const BoardWrite = () => {
   const navigate = useNavigate();
-  const { token, loginId } = useAuthStore();
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
 
-  useEffect(() => {
-    if (!token) {
-      alert("로그인이 필요한 서비스입니다.");
-      navigate('/login');
-    }
-  }, [token, navigate]);
 
   const handleSubmit = async () => {
     try {
-      await createBoard({ title, contents, writer: loginId });
+      const result = await createBoard({ title:title, contents:contents });
+      console.log(result);
       navigate('/board');
     } catch (error) {
       console.error('Error creating board:', error);
@@ -27,7 +21,6 @@ const BoardWrite = () => {
     }
   };
 
-  if (!token) return null;
 
   return (
     <div className={styles.container}>

@@ -29,11 +29,11 @@ function App() {
 
             <div className={styles.authButtons}>
               <Link to="/mypage" className={styles.navLink}>My Page</Link>
-              {token ? (
+              
                 <Link to="/" className={styles.loginBtn} onClick={logout}>Logout</Link>
-              ) : (
+               
                 <Link to="/login" className={styles.loginBtn}>Login</Link>
-              )}
+              
               <Link to="/signup" className={styles.signUpBtn}>Sign Up</Link>
             </div>
           </div>
