@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './BoardWrite.module.css';
+import { createBoard } from '../../api/board';
 
 const BoardWrite = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Add API call to submit the post
-    console.log('Submitted:', { title, content });
-    navigate('/board'); // Redirect after submit
+  const handleSubmit = async () => {
+    try {
+      await createBoard({ title, content });
+      navigate('/board');
+    } catch (error) {
+      console.error('Error creating board:', error);
+      alert('게시글 작성 중 오류가 발생했습니다.');
+    }
   };
 
   return (
@@ -22,7 +26,7 @@ const BoardWrite = () => {
           <p className={styles.subtitle}>새로운 게시글을 작성해주세요.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.formGroup}>
             <label htmlFor="title">제목</label>
             <input
@@ -56,14 +60,15 @@ const BoardWrite = () => {
               취소
             </button>
             <button 
-              type="submit" 
+              type="button" 
               className={styles.submitBtn}
+              onClick={handleSubmit}
               disabled={!title.trim() || !content.trim()}
             >
               등록
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
