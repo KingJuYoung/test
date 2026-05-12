@@ -148,3 +148,44 @@
   border-radius: 8px;
   border: 1px dashed #cbd5e1;
 }
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.editTitleInput {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.editTitleInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.editContentsInput {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 250px;
+  resize: vertical;
+  outline: none;
+}
+
+.editContentsInput:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
